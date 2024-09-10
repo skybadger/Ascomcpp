@@ -1,6 +1,6 @@
 # Ascomcpp
-This project to test building Alpaca device drivers using cpp classes. 
-I have already provided C headers and common code for the API in the form of the ASCOMRest project (http://www.github.comskybasder/ASCOMRest ) which is a dependency from a lot of the ASCOM Alpacaa projects here.  
+This project to test building Alpaca device drivers using cpp classes.</br> 
+I have already provided C headers and common code for the API in the form of the ASCOMRest project (http://www.github.com/skybadger/ASCOMRest ) which is a dependency from a lot of the ASCOM Alpacaa projects here.  
 I have some quibbles with the blackdragon astro implementation  and have always planned to use cpp objects to build ascom Alpaca driverss. 
 The key thing is that they need to support: 
 * REST invocation through the HTTP server and
