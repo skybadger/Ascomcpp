@@ -1,12 +1,15 @@
 # Ascomcpp
-This project to test building Alpaca device drivers using cpp classes
-I have some quibbles with blackdragon astro and have always planned to use cpp objects to build ascom Alpaca objets. 
-The key thing is that they need to support REST invocation through the HTTP server and multiple drivers in one device. 
+This project to test building Alpaca device drivers using cpp classes. 
+I have already provided C headers and common code for the API in the form of the ASCOMRest project (http://www.github.comskybasder/ASCOMRest ) which is a dependency from a lot of the ASCOM Alpacaa projects here.  
+I have some quibbles with the blackdragon astro implementation  and have always planned to use cpp objects to build ascom Alpaca driverss. 
+The key thing is that they need to support: 
+* REST invocation through the HTTP server and
+* multiple drivers in one device.
+
+It doesn't seem to make sense to support some things like multiple telescopes or observatories from one device ( there's nothing ruling it our either but they would bneed to be identifal in behaviour for multiple instances of the same driver.  ) 
+Some things seem to go well together like filter wheel and focuser as one pairing and colvercalibrator and dew heater as another, both on a single hardware device. So the class library structure should support this and still be performant.
 
 ## Structure 
-This class library asserts that more than one driver needs to be supported on one device instance . A good example is the use of the focuser to manage collimator motors - I need at least two on a three-point support. 
-Which do you prefer- a separate device and driver for each motor or a a common device and the motors numbered 1-2 or 1-3 through the instance number ? 
-
 ASCOMDiscoveryManager Object to manage UDP discovery & settings
 ASCOMDevice Object to manage the core common device attributes. ie support one or more drivers on  1 device. 
 ASCOMCommonDriver - manages the common core functions - name, version etc. 
@@ -18,6 +21,10 @@ The key test is whether the staatic handler functions can address and interact w
 Supplementarty classes iwll be required to handle things like motors, encoders, sensors etc. 
 
 ## Use
+Create a single Device  instance 
+Add driver instances derived from the generic class to the Device identified by the Alpaca driver type and index. 
+Register handlers with HTTP server instance. 
+Run. 
 
 ## Testing 
 
